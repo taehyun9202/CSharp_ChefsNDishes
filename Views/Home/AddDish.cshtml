@@ -1,0 +1,36 @@
+@model Dish
+<div class="jumbotron">
+    <h1>Add Dish</h1>
+</div>
+<form asp-action="CreateDish" class="col-5" method="post">
+    @* <input type="hidden" asp-for="DishId" value="@Model.DishId"> *@
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name">
+    </div>
+    <div class="form-group">
+        <label asp-for="Calories"></label>
+        <input asp-for="Calories">
+    </div>
+    <div class="form-group">
+        <label asp-for="Tastiness"></label>
+        <input asp-for="Tastiness">
+    </div>
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <input asp-for="Description">
+    </div>
+    <div class="form-group">
+        <label>Chef</label>
+        <select asp-for="ChefId">
+            <option value="" disabled selected>Select the Chef</option>
+            @foreach (var i in ViewBag.AllChefs)
+            {
+            <option value="@i.ChefId">@i.FirstName @i.LastName</option>
+            }
+        </select>
+    </div>
+    <div>
+        <input type="submit" value="Create Dish" class="btn btn-primary">
+    </div>
+</form>
